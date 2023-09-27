@@ -23,3 +23,21 @@ function twoNumberSum(array, targetSum) {
 
 // Create an object to track the numbers 
 // check for potential number if it is already present in object then return it otherwise update the object accordingly .
+
+// Hint: For every number X in the input array, you are essentially trying to find a corresponding 
+// Number Y such that X + Y = targetSum
+// with two variables in this equation known to you, solve for Y
+// Hint Try storing every number in a hash table, solving the equation mentioned in prev hint for every Number,
+// and checking if the Y that you find is stored in the hash table
+
+// test case 
+// input {
+// "array": [5, 6, 1],
+// "targetSum": 5
+// }
+// output from my code:
+// [4, 1]
+
+// so the above code works by taking each item in array
+// variable "potentialNum" is targetSum - item
+// if the "potentialNum" is in hashmap {numbers}
