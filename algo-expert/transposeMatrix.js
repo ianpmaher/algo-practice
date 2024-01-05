@@ -19,16 +19,14 @@
 function transposeMatrix(matrix) {
     let outputArr = [];
 
-    let inputLength = matrix.length;
-    let elemLength = matrix[0].length;
-
-    for (const element of matrix) {
-        if (element) {
-            for (let i = 0; i < 1; i++) {
-                outputArr.push(matrix[0].flat());
-            }
+    for (let i = 0; i < matrix.length; i++) {
+        // how many rows we have
+        for (let j = 0; j < matrix[i].length; j++) {
+            if (outputArr[j] === undefined) outputArr.push([]);
+            outputArr[j].push(matrix[i][j]);
         }
     }
+
     return outputArr;
 }
 
