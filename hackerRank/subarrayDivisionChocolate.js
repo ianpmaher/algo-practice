@@ -37,6 +37,8 @@ function birthday(s, d, m) {
     let result = 0;
     // let tempArr = [];
     // for (let i = 0; i < s.length; i++) { // old code
+    // EXPLANATION: 
+    // for i<= s.length - m, we are looking for 0 difference between i and i + m // 0 difference = month (m)
     for (let i = 0; i <= s.length - m; i++) {
         let sum = 0;
         for (let j = i; j < i + m; j++) { // inner loop to sum up the integers in the array that are m apart
@@ -51,5 +53,8 @@ function birthday(s, d, m) {
     // result = tempArr.length;
     return result;
 }
+
+// time complexity: O(n^2)
+// space complexity: O(n)
 
 console.log(birthday([1, 2, 1, 3, 2], 3, 2)); // 2
