@@ -29,10 +29,11 @@ function dayOfProgrammer(year) {
         // Write your code here
     // range is [1700, 2700] inclusive
     // if 1700 - 1917 => Julian calendar -- leap years divisible by 4
-    // if 1919 - 2700 => Gregorian calendar -- leap years divisible by 400 | divisible by 4 && not divisible by 100
+    // if 1919 - 2700 => Gregorian calendar -- leap years divisible by 400 || divisible by 4 && not divisible by 100
     // given year, find the date of the 256th day of that year, printed in dd.mm.yyyy
     // maybe array of objects to hold all of the months and stuff?
     // regular non leap year
+    let result = ""
     const calendar = [
         { "01": 31 },
         { "02": 28 },
@@ -41,11 +42,64 @@ function dayOfProgrammer(year) {
         { "05": 31 },
         { "06": 30 },
         { "07": 31 },
-        { "08": 30 },
-        { "09": 31 }, // maybe rest are unncessary
+        { "08": 31 },
     ]
-    if (year === 1918) {
-        console.log("26.09.1918")
+    if (year >= 1700 && year <= 1917) {
+        if (year % 4 === 0) {
+            calendar[1]["02"] = 29
+            const sum1 = calendar[0]["01"] + calendar[1]["02"] + calendar[2]["03"] + calendar[3]["04"] + calendar[4]["05"] + calendar[5]["06"] + calendar[6]["07"] + calendar[7]["08"]
+            let daysTotal = 256 - sum1
+            // console.log(daysTotal)
+            return `${daysTotal}.09.${year}`
+        } else {
+            const sum1 = calendar[0]["01"] + calendar[1]["02"] + calendar[2]["03"] + calendar[3]["04"] + calendar[4]["05"] + calendar[5]["06"] + calendar[6]["07"] + calendar[7]["08"]
+            let daysTotal = 256 - sum1
+            return `${daysTotal}.09.${year}`
+        }
+    } else if (year >= 1919 && year <= 2700) {
+        if (year % 400 === 0) {
+            calendar[1]["02"] = 29
+            const sum1 = calendar[0]["01"] + calendar[1]["02"] + calendar[2]["03"] + calendar[3]["04"] + calendar[4]["05"] + calendar[5]["06"] + calendar[6]["07"] + calendar[7]["08"]
+            let daysTotal = 256 - sum1
+            // console.log(daysTotal)
+            return `${daysTotal}.09.${year}`
+
+        } else if (year % 4 === 0 && year % 100 != 0) {
+            calendar[1]["02"] = 29
+            const sum1 = calendar[0]["01"] + calendar[1]["02"] + calendar[2]["03"] + calendar[3]["04"] + calendar[4]["05"] + calendar[5]["06"] + calendar[6]["07"] + calendar[7]["08"]
+            let daysTotal = 256 - sum1
+            // console.log(daysTotal)
+            return `${daysTotal}.09.${year}`
+        } else {
+            const sum1 = calendar[0]["01"] + calendar[1]["02"] + calendar[2]["03"] + calendar[3]["04"] + calendar[4]["05"] + calendar[5]["06"] + calendar[6]["07"] + calendar[7]["08"]
+            let daysTotal = 256 - sum1
+            return `${daysTotal}.09.${year}`
+        }
+    } else if (year === 1918) {
+        calendar[1]["02"] = 15
+        const sum1 = calendar[0]["01"] + calendar[1]["02"] + calendar[2]["03"] + calendar[3]["04"] + calendar[4]["05"] + calendar[5]["06"] + calendar[6]["07"] + calendar[7]["08"]
+        let daysTotal = 256 - sum1
+        return `${daysTotal}.09.${year}`
+        // 26.09.1918
     }
-    
+    return result
 }
+
+console.log(dayOfProgrammer(1918))
+
+
+// from HackerRank discussions board
+// function dayOfProgrammer(year) {
+//     if (year == 1918) {
+//       // Corner case
+//       return `26.09.${year}`; 
+//     } else if (year > 1918) {
+//       // Calculating Leap year in Gregorian Calendar
+//       const isLeapYear = (year % 4 == 0) && (year % 100 != 0) || year % 400 == 0;
+//       return `${isLeapYear ? 12 : 13}.09.${year}`;
+//     } else {
+//       // Calculating Leap year in Julian Calendar
+//       return `${year % 4 == 0 ? 12 : 13}.09.${year}`;
+//     }
+//   }
+  
