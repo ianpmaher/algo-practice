@@ -15,6 +15,9 @@ class TreeNode {
     removeChild(childToRemove) {
         const length = this.children.length;
         this.children = this.children.filter((child) => {
+            // if childToRemove is an instance of TreeNode, compare the instances
+            // otherwise, compare the data
+            // checking if duplicate instances are being removed from the children array
             return childToRemove instanceof TreeNode ? child !== childToRemove : child.data !== childToRemove;
         });
 
