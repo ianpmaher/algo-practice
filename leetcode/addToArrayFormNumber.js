@@ -25,7 +25,7 @@ var addToArrayForm = function (num, k) {
   const numSum = BigInt(num.join(''));
   const kBig = BigInt(k)
   const kSum = numSum + kBig;  // convert number to array
-  
+
   const output = kSum.toString().split("").map(Number);
   return output;
 
@@ -47,3 +47,10 @@ var addToArrayForm = function (num, k) {
 };
 
 console.log(addToArrayForm([1, 2, 0, 0], 34)); // [1,2,3,4]
+
+
+// Approach	Time Complexity	Space Complexity
+// String-Based	O(n)	O(n)
+// Digit-by-Digit	O(n + \log_{10} k)	O(n + \log_{10} k)
+
+// so the digit-by-digit approach is better than the string-based approach because it has a smaller space complexity.
